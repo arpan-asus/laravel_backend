@@ -16,9 +16,24 @@ class SiteController extends Controller
         ];
         return view('site.home', $data);
     }
+
+    public function getCart(){
+        if(Session::get('cartcode'))
+        {
+            $carcode = Session::get('cartcode');
+            $data =[
+                'carts' => Cart::where('code', $carcode)->get()
+            ];
+            return view('site.carts', $data);
+        }
+        else{
+            abort(404);
+        }
+    }
     public function getAddCart(Product $product){
         $code = Str::random(6);
         $qty = 3;
+        $qty = 1;
         if(Session::get('cartcode')){
 
 
@@ -29,17 +44,18 @@ class SiteController extends Controller
         $cart->totalcost = $product->cost*$qty;
         $cart->code = Session::get('cartcode');
         $cart->save();
+
         }
         else{
+
             $cart = New Cart;
             $cart->product_id = $product->id;
             $cart->qty = $qty;
-            $cart->cost = $product->cost;
-            $cart->totalcost = $product->cost*$qty;
-            $cart->code = $code;
             $cart->save();
             Session::put('cartcode', $code);
         }
+        return redirect()->route('getCart');
 
     }
 }
+

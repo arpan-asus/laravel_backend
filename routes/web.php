@@ -25,11 +25,12 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\SiteController;
+use App\Http\Controllers\UsersCommentController;
 
 Route::get('/', [SiteController::class, 'getHome'])->name('getHome');
 Route::get('/cart/{product}', [SiteController::class, 'getAddCart'])->name('getAddCart');
+Route::get('/carts', [SiteController::class, 'getCart'])->name('getCart');
 Route::get('/addoption', [UserController::class, 'addoption']);
-
 
 Route::get('/login', function () {return redirect('sign-in');})->middleware('guest');
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth')->name('dashboard');
@@ -101,4 +102,4 @@ Route::get('/gallery/delete/{gallery}', [GalleryController::class, 'getDeleteGal
 Route::get('/edit/{gallery}', [GalleryController::class, 'getEditProduct'])->name('getEditProduct');
 Route::post('/gallery/edit/{gallery}', [GalleryController::class, 'postEditGallery'])->name('postEditGallery');
 
-
+Route::get('/user/comment', [UsersCommentController::class, 'getUsersComment'])->name('getUsersComment');

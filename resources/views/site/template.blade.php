@@ -49,13 +49,14 @@
                <span class="toggle_icon" onclick="openNav()"><img src="{{asset('site/images/toggle-icon.png')}}"></span>
                <a class="logo" href="index.html"><img src="{{asset('site/images/logo.png')}}"></a></a>
                <form class="form-inline ">
-                  <div class="login_text">
-                     <ul>
-                        <li><a href="#"><img src="{{asset('site/images/user-icon.png')}}"></a></li>
-                        <li><a href="#"><img src="{{asset('site/images/bag-icon.png')}}"></a></li>
-                        <li><a href="#"><img src="{{asset('site/images/search-icon.png')}}"></a></li>
-                     </ul>
-                  </div>
+                <div class="login_text">
+                    <ul>
+                       <li><a href="#"><img src="{{asset('site/images/user-icon.png')}}"></a></li>
+                       <li><a href="#"><img src="{{asset('site/images/bag-icon.png')}}"></a></li>
+                       <li><a href="{{route('getCart')}}"><img src="{{asset('site/images/bag-icon.png')}}"></a></li>
+                       <li><a href="#"><img src="{{asset('site/images/search-icon.png')}}"></a></li>
+                    </ul>
+                 </div>
                </form>
             </nav>
          </div>
