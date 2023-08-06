@@ -34,7 +34,7 @@ class SiteController extends Controller
         $code = Str::random(6);
         $qty = 3;
         $qty = 1;
-        if(Session::get('cartcode')){
+        if(Session::get('cartcode')){//cartcode session ma xa bhaney if
 
 
         $cart = New Cart;
@@ -46,16 +46,22 @@ class SiteController extends Controller
         $cart->save();
 
         }
-        else{
+        else{   //yedi session ma cartcode xaina bhaney
 
             $cart = New Cart;
             $cart->product_id = $product->id;
             $cart->qty = $qty;
+            $cart->cost = $product->cost;
+            $cart->totalcost = $product->cost*$qty;
+            $cart->code= $code;
             $cart->save();
-            Session::put('cartcode', $code);
+            Session::put('cartcode', $code);//session ma cartcode rakhni
         }
         return redirect()->route('getCart');
 
+    }
+    public function getCheckout(){
+        return view('site.checkout');
     }
 }
 

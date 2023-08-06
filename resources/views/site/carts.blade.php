@@ -53,21 +53,11 @@
                                         <td>{{ $tabledata->qty }}</td>
                                         <td>{{ $tabledata->cost }}</td>
                                         <td>{{ $tabledata->totalcost }}</td>
-                                        <td><a href="">Delete</a></td>
+                                        <td><a href=""><b>Delete</b></a></td>
                                     </tr>
                                 </tbody>
                                 @endforeach
                         </table>
-
-
-
-
-
-
-
-
-
-
 
 
                     </table>
@@ -75,7 +65,7 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <a href="" class="btn btn-primary">Checkout</a>
+                    <a href="{{route('getCheckout')}}" class="btn btn-primary">Checkout</a>
                 </div>
             </div>
         </div>

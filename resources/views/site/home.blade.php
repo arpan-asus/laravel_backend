@@ -84,7 +84,7 @@
                                 <div class="btn_main">
                                 <div class="buy_bt">
                                     <ul>
-                                        <li class="active"><a href="{{route('getAddCart', $product->id)}}">Add to Cart</a></li>
+                                        <li class="active"><a href="{{route('getAddCart', $product->id)}}">Add Cart</a></li>
                                         <li><a href="#">Buy Now</a></li>
                                     </ul>
                                 </div>
