@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\manageshipping;
 
 class ProductController extends Controller
 {
@@ -71,5 +72,41 @@ class ProductController extends Controller
         }
         return redirect()->route('getManageProduct');
     }
+    public function getshipping(){
+        return view('admin.shippingcost.shipping');
+    }
+    public function postShipping(Request $request){
+        $state=$request->state;
+        $charge=$request->charge;
+        $status=$request->status;
 
+        $manageshippings = new manageshipping;
+        $manageshippings->state=$state;
+        $manageshippings->charge=$charge;
+        $manageshippings->status=$status;
+        $manageshippings->save();
+
+        return redirect()->route('getshipping');
+    }
+
+    public function getManageShipping(){
+        return view('admin.shippingcost.manage',['manageshippings'=> manageshipping::paginate(15)]);
+    }
+    public function getDeleteShipping(manageshipping $manageshipping){
+        $manageshipping->delete();
+        return redirect()->route('getManageShipping');
+    }
+    public function getEditShipping(manageshipping $manageshipping){
+        $data=[
+            'manageshipping'=>$manageshipping
+        ];
+        return view('admin.shippingcost.edit',$data);
+    }
+    public function postEditShipping(Request $request, manageshipping $manageshipping){
+    $manageshipping->state=$request->input('state');
+    $manageshipping->charge=$request->input('charge');
+    $manageshipping->status=$request->input('status');
+    $manageshipping->save();
+    return redirect()->route('getManageShipping');
+    }
 }

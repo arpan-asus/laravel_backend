@@ -103,6 +103,24 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a class="nav-link text-white {{ $activePage == 'shipping' ? ' active bg-gradient-primary' : '' }} "
+                    href="{{route('getshipping')}}">
+                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="material-icons opacity-10">table_view</i>
+                    </div>
+                    <span class="nav-link-text ms-1">Shipping</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white {{ $activePage == 'shippingtable' ? ' active bg-gradient-primary' : '' }} "
+                    href="{{route('getManageShipping')}}">
+                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="material-icons opacity-10">table_view</i>
+                    </div>
+                    <span class="nav-link-text ms-1">Shipping Table</span>
+                </a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link text-white {{ $activePage == 'users_comment' ? ' active bg-gradient-primary' : '' }} "
                     href="{{route('getUsersComment')}}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">

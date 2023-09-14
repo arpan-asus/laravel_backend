@@ -32,6 +32,12 @@ Route::get('/cart/{product}', [SiteController::class, 'getAddCart'])->name('getA
 Route::get('/carts', [SiteController::class, 'getCart'])->name('getCart');
 Route::get('/addoption', [UserController::class, 'addoption']);
 Route::get('/checkout', [SiteController::class, 'getCheckout'])->name('getCheckout');
+// Route::get('/shipping', [SiteController::class, 'getShipping'])->name('getShipping');
+Route::get('/cart/delete/{id}', [SiteController::class, 'deletecart'])->name('deletecart');
+Route::post('/post/ajax', [SiteController::class, 'postAjax'])->name('postAjax');
+// Route::get('/preview{shipping}', [SiteController::class, 'preview'])->name('preview');
+Route::post('/order', [SiteController::class, 'postAddOrder'])->name('postAddOrder');
+
 
 Route::get('/login', function () {return redirect('sign-in');})->middleware('guest');
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth')->name('dashboard');
@@ -41,6 +47,10 @@ Route::get('sign-in', [SessionsController::class, 'create'])->middleware('guest'
 Route::post('sign-in', [SessionsController::class, 'store'])->middleware('guest');
 Route::post('verify', [SessionsController::class, 'show'])->middleware('guest');
 Route::post('reset-password', [SessionsController::class, 'update'])->middleware('guest')->name('password.update');
+
+
+
+
 Route::get('verify', function () {
 	return view('sessions.password.verify');
 })->middleware('guest')->name('verify');
@@ -95,6 +105,12 @@ Route::get('/manage/product', [ProductController::class, 'getManageProduct'])->n
 Route::get('/product/delete/{product}', [ProductController::class, 'getDeleteProduct'])->name('getDeleteProduct');
 Route::get('/product/edit{product}', [ProductController::class, 'getEditProduct'])->name('getEditProduct');
 Route::post('/product/edit/{products}', [ProductController::class, 'postEditProduct'])->name('postEditProduct');
+Route::get('/addshipping', [ProductController::class, 'getshipping'])->name('getshipping');
+Route::post('/shippingdetails', [ProductController::class, 'postShipping'])->name('postShipping');
+Route::get('/shipping/table', [ProductController::class, 'getManageShipping'])->name('getManageShipping');
+Route::get('/shipping/delete/{manageshipping}', [ProductController::class, 'getDeleteShipping'])->name('getDeleteShipping');
+Route::get('/shipping/edit/{manageshipping}', [ProductController::class, 'getEditShipping'])->name('getEditShipping');
+Route::post('shippings/edit/{manageshipping}', [ProductController::class, 'postEditShipping'])->name('postEditShipping');
 
 Route::get('/gallery', [GalleryController::class, 'getAddGallery'])->name('getAddGallery');
 Route::post('/gallery/add', [GalleryController::class, 'getPostGallery'])->name('getPostGallery');
@@ -104,3 +120,6 @@ Route::get('/edit/{gallery}', [GalleryController::class, 'getEditProduct'])->nam
 Route::post('/gallery/edit/{gallery}', [GalleryController::class, 'postEditGallery'])->name('postEditGallery');
 
 Route::get('/user/comment', [UsersCommentController::class, 'getUsersComment'])->name('getUsersComment');
+
+
+Route::get('/esewa', [SiteController::class, 'getesewa'])->name('getesewa');

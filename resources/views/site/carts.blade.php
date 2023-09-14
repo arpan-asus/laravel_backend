@@ -53,7 +53,7 @@
                                         <td>{{ $tabledata->qty }}</td>
                                         <td>{{ $tabledata->cost }}</td>
                                         <td>{{ $tabledata->totalcost }}</td>
-                                        <td><a href=""><b>Delete</b></a></td>
+                                        <td><a href="{{route('deletecart',$productinfo->id)}}"><b>Delete</b></a></td>
                                     </tr>
                                 </tbody>
                                 @endforeach
